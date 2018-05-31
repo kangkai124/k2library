@@ -1,5 +1,5 @@
 module.exports = async (ctx) => {
     ctx.state.data = {
-        message: 'Test local env'
+        content: 'Test local env'
     }
 }

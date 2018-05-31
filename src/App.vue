@@ -1,12 +1,30 @@
 <script>
+import qcloud from 'wafer2-client-sdk';
+// import get from './utils';
+import conf from './config';
+
 export default {
   created() {
-    // 调用API从本地缓存中获取数据
-    const logs = wx.getStorageSync('logs') || [];
-    logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs);
+    // get('/weapp/demo')
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((err) => {
+    //     console.err(err);
+    //   });
 
-    // console.log('app created and cache logs by setStorageSync');
+    // 设置登录地址
+    qcloud.setLoginUrl(conf.loginUrl);
+    qcloud.login({
+      success(userInfo) {
+        console.log('登录成功', userInfo);
+      },
+      fail(err) {
+        console.log('登录失败', err);
+      }
+    });
+
+    console.log('app created ');
   },
 };
 </script>
