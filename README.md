@@ -3,4 +3,4 @@
 mpvue + koa2
 
 TODO:
-1. [ ]用wx api 替换 wafer2-client-sdk
+- [ ] 用wx api 替换 wafer2-client-sdk 
