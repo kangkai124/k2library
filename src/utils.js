@@ -13,4 +13,18 @@ const get = url => new Promise((resolve, reject) => {
   });
 });
 
+export const showSuccess = (title) => {
+  wx.showToast({
+    title,
+    icon: 'success',
+  });
+};
+
+export const showFail = (title) => {
+  wx.showToast({
+    title,
+    icon: 'none',
+  });
+};
+
 export default get;

@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import App from './App';
+import './styles/index.less';
 
 Vue.config.productionTip = false;
 // App.mpType = 'app';
-
 const app = new Vue(App);
 app.$mount();
 
@@ -11,9 +11,9 @@ export default {
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页
     pages: [
-      '^pages/books/main',
+      'pages/books/main',
       'pages/comments/main',
-      'pages/me/main',
+      '^pages/me/main',
     ],
     window: {
       backgroundTextStyle: 'light',
