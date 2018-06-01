@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "mpvue": "^1.0.11",
+    "ramda": "^0.25.0",
     "vuex": "^3.0.1",
     "wafer2-client-sdk": "^1.1.3"
   },

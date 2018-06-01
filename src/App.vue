@@ -1,30 +1,10 @@
 <script>
 import qcloud from 'wafer2-client-sdk';
-// import get from './utils';
 import conf from './config';
 
 export default {
   created() {
-    // get('/weapp/demo')
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => {
-    //     console.err(err);
-    //   });
-
-    // 设置登录地址
     qcloud.setLoginUrl(conf.loginUrl);
-    qcloud.login({
-      success(userInfo) {
-        console.log('登录成功', userInfo);
-      },
-      fail(err) {
-        console.log('登录失败', err);
-      }
-    });
-
-    console.log('app created ');
   },
 };
 </script>
