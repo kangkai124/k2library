@@ -35,4 +35,18 @@ router.post('/message', controllers.message.post)
 // demo
 router.get('/demo', controllers.demo)
 
+// 添加图书
+router.post('/addbook', controllers.addbook)
+
+// book list
+router.get('/booklist', controllers.booklist)
+
+// book detail
+router.get('/bookdetail', controllers.bookdetail)
+
+// top
+router.get('/top', controllers.top)
+
+router.post('/comment', controllers.comment)
+
 module.exports = router

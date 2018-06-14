@@ -26,4 +26,12 @@ export default {
   -webkit-transition: width 2s;
   -o-transition: width 2s;
 }
+.text-primary {
+  color: #ea5149;
+}
+.text-footer {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 </style>
