@@ -1,7 +1,8 @@
 <template>
   <div>
     <BookInfo :info="info"></BookInfo>
-    <div class="comment">
+    <CommentList :comments="comments"></CommentList>
+    <div class="comment" v-if="showAdd">
       <textarea
         v-model="comment"
         class="textarea"
@@ -22,10 +23,14 @@
           评论
         </button>
     </div>
+    <div v-else class="page-title">
+      未登录 或已经评论过
+    </div>
   </div>
 </template>
 <script>
 import BookInfo from '@/components/BookInfo';
+import CommentList from '@/components/CommentList';
 import get, { showModal, post } from '../../utils';
 
 export default {
@@ -41,6 +46,7 @@ export default {
   },
   components: {
     BookInfo,
+    CommentList,
   },
   mounted() {
     this.bookId = this.$root.$mp.query.id;
@@ -55,6 +61,13 @@ export default {
   onUnload() {
     this.reset();
   },
+  computed: {
+    showAdd() {
+      if (!this.userInfo.openId) return false;
+      if (this.comments.findIndex(c => c.openId === this.userInfo.openId) > -1) return false;
+      return true;
+    },
+  },
   methods: {
     async getDetail() {
       const info = await get('/weapp/bookdetail', { id: this.bookId });
@@ -62,7 +75,7 @@ export default {
       this.info = info.data;
     },
     async getComments() {
-      const comments = get('/weapp/commentlist', { bookId: this.bookId });
+      const comments = await get('/weapp/commentlist', { bookId: this.bookId });
       this.comments = comments.data.list;
     },
     getGeo(e) {
@@ -115,6 +128,7 @@ export default {
       try {
         await post('/weapp/comment', data);
         this.comment = '';
+        this.getComments();
       } catch (err) {
         showModal('失败', err.msg);
       }
@@ -130,7 +144,7 @@ export default {
   },
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .comment {
   font-size: 14px;
   margin-top: 10px;

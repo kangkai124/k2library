@@ -34,4 +34,13 @@ export default {
   font-size: 12px;
   margin-bottom: 10px;
 }
+.right {
+  float: right;
+}
+.page-title {
+  padding-left: 20px;
+  line-height: 40px;
+  font-size: 14px;
+  background: #fff;
+}
 </style>

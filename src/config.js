@@ -1,4 +1,4 @@
-const host = 'http://localhost:5757';
+const host = 'http://10.1.30.144:5757';
 
 const config = {
   host,
