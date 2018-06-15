@@ -36,6 +36,7 @@ export default {
       location: '',
       phone: '',
       userInfo: {},
+      comments: [],
     };
   },
   components: {
@@ -44,6 +45,7 @@ export default {
   mounted() {
     this.bookId = this.$root.$mp.query.id;
     this.getDetail();
+    this.getComments();
     const userInfo = wx.getStorageSync('user');
     if (userInfo) this.userInfo = userInfo;
   },
@@ -58,6 +60,10 @@ export default {
       const info = await get('/weapp/bookdetail', { id: this.bookId });
       wx.setNavigationBarTitle({ title: info.data.title });
       this.info = info.data;
+    },
+    async getComments() {
+      const comments = get('/weapp/commentlist', { bookId: this.bookId });
+      this.comments = comments.data.list;
     },
     getGeo(e) {
       const ak = 'pcP80bC4Ee109neF9ZCmZyuNM70oamGA';

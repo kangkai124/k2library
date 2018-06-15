@@ -49,4 +49,6 @@ router.get('/top', controllers.top)
 
 router.post('/comment', controllers.comment)
 
+router.get('/commentlist', controllers.commentlist)
+
 module.exports = router
